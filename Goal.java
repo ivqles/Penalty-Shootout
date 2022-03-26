@@ -25,9 +25,15 @@ public class Goal {
 
     // called during every round; sets randomized place for "K"
     public void setGoalie() {
+        
+        int col =  (int)(Math.random()*(CountofColumns));
+        int row =  (int)(Math.random()*(CountofColumns));  
+        goalArray[row][col] = Keeper;
     }
 
-    public int kick(int row, int col) {
-        return 0; // Dummy return; will return different numbers based on win/loss
+    //sets the ball to position provided by the player
+    public void kick(int row, int col) {
+        goalArray[row][col] = ball;
+         
     }
 }
