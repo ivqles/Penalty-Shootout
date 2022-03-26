@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String args[]){
         Scanner x = new Scanner(System.in);
         Goal game = new Goal();
@@ -36,7 +37,6 @@ public class Main {
             System.out.println("\n Next round!");
         } 
        x.close(); //closes Scanner
-
        //if there are four modes...     easy / med / hard / abstract (1, 2, 3, 4)
        //medium would have increasing goalie positions by 1 //hard would be the user can't choose the same spot twice //abstract would be a changing goal size
        /*

@@ -1,5 +1,4 @@
 public class Goal {
-
      // Instantiating Variables
      static char emptySpace = 'O';
      static char ball = 'B';
