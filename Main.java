@@ -36,10 +36,9 @@ public class Main {
         
             game.setGoalie(); //goalie position is placed randomly on the grid
             game.kick(r,c); //inputs client's position on the grid
-            System.out.println(game); //returns grid positions
-            game.getOutcome(); //returns a random statement depending on the results 
+            System.out.println(game); // pritns grid positions
             score = game.totalScore();
-            System.out.println("You have earned " + score + " points!"); //returns total score
+            game.Outcome(); // prints dialogue and score
             if (score != 3) {
                 System.out.println("\nNext round!");
             }
