@@ -36,4 +36,8 @@ public class Goal {
         goalArray[row][col] = ball;
          
     }
+
+    public String getOutcome() {
+        return "";
+    }
 }
