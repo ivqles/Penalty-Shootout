@@ -1,11 +1,13 @@
 import java.util.Scanner;
 public class Main {
+
     public static void main(String args[]){
         Goal game = new Goal();
 
         //introduction
         System.out.println("Welcome to the ARENA!");
         System.out.println("Your task: shoot a goal! Choose the spot where the goalie can't reach!");
+
         
         int totalScore = 0;
         while(totalScore < 3) {
