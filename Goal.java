@@ -19,4 +19,8 @@ public class Goal {
     public int kick(int row, int col) {
         return 0; // Dummy return; will return different numbers based on win/loss
     }
+
+    public String getOutcome() {
+        return "";
+    }
 }
