@@ -9,7 +9,7 @@ public class Main {
         //introduction
         System.out.println("Welcome to the ARENA!");
         System.out.println("Your task: shoot a goal! Choose the spot where the goalie can't reach! \n");
-        Goal.gameModes();
+        //Goal.gameModes();
         // System.out.print("Level: ");
         // String mode = x.nextLine();
         // Goal.setLevel(mode);
