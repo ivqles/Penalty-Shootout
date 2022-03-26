@@ -3,16 +3,15 @@ public class Goal {
     // Instantiating Variables
     static char emptySpace = 'O';
     static char ball = 'B';
-    static char Keeper = 'K';
-    static int CountofRows = 3;
-    static int CountofColumns = 5;
-    char[][] goalArray = new char[CountofRows][CountofColumns];
+    static char goalie = 'G';
+    static int countRows = 3;
+    static int countColumns = 5;
+    char[][] goalArray = new char[countRows][countColumns];
 
     // Constructing Goal / Game Board (3 x 5)
     public Goal() {
-        for (int row = 0; row < goalArray.length; row++) {
-
-            for (int col = 0; col < goalArray[0].length; col++) {
+        for (int row = 0; row < countRows; row++) {
+            for (int col = 0; col < countColumns; col++) {
                 goalArray[row][col] = emptySpace;
             }
         }
@@ -20,15 +19,21 @@ public class Goal {
 
     // toString Method for Proper String Output
     public String toString() {
-        return "";
+        String goalArrayString = "";
+        for (char[] row : goalArray) {
+            for (char placeholder : row) {
+                goalArrayString += placeholder + " ";
+            }
+            goalArrayString += "\n";
+        }
+        return goalArrayString;
     }
 
     // called during every round; sets randomized place for "K"
     public void setGoalie() {
-        
-        int col =  (int)(Math.random()*(CountofColumns));
-        int row =  (int)(Math.random()*(CountofColumns));  
-        goalArray[row][col] = Keeper;
+        int col =  (int)(Math.random()*(countColumns - 1));
+        int row =  (int)(Math.random()*(countRows - 1));  
+        goalArray[row][col] = goalie;
     }
 
     //sets the ball to position provided by the player
