@@ -9,6 +9,7 @@ public class Goal {
      static int score = 0;
      public int playerPos = 0;
      public int goaliePos = 0;
+     public int level = 1;
      char[][] goalArray = new char[countRows][countColumns];
  
      // Constructing Goal / Game Board (3 x 5)
@@ -20,6 +21,14 @@ public class Goal {
          }
      }
  
+     public void introduction() {
+        System.out.println("Choose your game mode!");
+        System.out.println("EASY: it's easy. basic. what else would you expect.");
+        System.out.println("MEDIUM: ooh... looking for a challenge are you? Well, now the goalie can block an increasing amount of spaces per turn, muahaha.");
+        System.out.println("HARD: say good-bye to your previous choices! One click and there's no going back.");
+        System.out.println("ABSTRACT: ever wanted a changing goal? no? well here's one anyway.");
+        System.out.print("Level: ");
+     }
      // toString Method for Proper String Output
      public String toString() {
          String goalArrayString = "";
@@ -54,6 +63,9 @@ public class Goal {
          return score;
      }
  
+     public void setLevel(int l){
+         level = l;
+     }
      public String getOutcome() {
          return "";
      }

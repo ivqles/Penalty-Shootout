@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String args[]){
         Scanner x = new Scanner(System.in);
@@ -6,23 +7,25 @@ public class Main {
 
         //introduction
         System.out.println("Welcome to the ARENA!");
-        System.out.println("Your task: shoot a goal! Choose the spot where the goalie can't reach!");
+        System.out.println("Your task: shoot a goal! Choose the spot where the goalie can't reach! \n");
+        game.introduction();
+        game.setLevel(x.nextInt());
         int score = game.totalScore();
 
         while(score < 3) {
             System.out.println(game); //returns a 3 by 5 grid
             System.out.print("Enter the row number:");
             int r = x.nextInt() - 1;
-            while(r<0 || r>2){
-                System.out.println("That is not a valid number. Try again!");
-                r = x.nextInt()-1;
-            }
+                while(r<0 || r>2){
+                    System.out.println("That is not a valid number. Try again!");
+                    r = x.nextInt()-1;
+                }
             System.out.print("\n" + "Enter the column number:");
             int c = x.nextInt() - 1;
-            while(c<0 || c>4){
-                System.out.println("That is not a valid number. Try again!");
-                c = x.nextInt();
-            }
+                while(c<0 || c>4){
+                    System.out.println("That is not a valid number. Try again!");
+                    c = x.nextInt();
+                }
         
             game.setGoalie(); //goalie position is placed randomly on the grid
             game.kick(r,c); //inputs client's position on the grid
@@ -30,9 +33,7 @@ public class Main {
             game.getOutcome(); //returns a random statement depending on the results 
             score = game.totalScore();
             System.out.println("You have earned " + score + " points!"); //returns total score
-            if (score != 3) {
-                System.out.println("\n Next round!");
-            }
+            System.out.println("\n Next round!");
         } 
        x.close(); //closes Scanner
 
