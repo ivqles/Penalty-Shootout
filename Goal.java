@@ -9,6 +9,10 @@ public class Goal {
     public int playerPos = 0;
     public int goaliePos = 0;
     public static String levelString;
+    public boolean win;
+
+    String[] winDialogue = {"ex: you made a goal"}; // ADD MORE DIALOGUE LATER
+    String[] loseDialogue = {"ex: you did not make a goal lol"}; // ADD MORE DIALOGUE LATER
 
     char[][] goalArray = new char[countRows][countColumns];
  
@@ -47,27 +51,41 @@ public class Goal {
  
     // called during every round; sets randomized place for "K"
     public void setGoalie() {
-        int col =  (int)(Math.random()*(countColumns - 1));
-        int row =  (int)(Math.random()*(countRows - 1));  
+        int col =  (int)(Math.random() * (countColumns - 1));
+        int row =  (int)(Math.random() * (countRows - 1));  
         goalArray[row][col] = goalie;
-        goaliePos = row*3 + col*5;
+        goaliePos = row * 3 + col * 5;
     }
  
     //sets the ball to position provided by the player
     public void kick(int row, int col) {
         goalArray[row][col] = ball;
-        playerPos = row*3 + col*5;
+        playerPos = row * 3 + col * 5;
           
     }
 
     public int totalScore(){
-        if(goaliePos!=playerPos){
+        if(goaliePos != playerPos){
+            win = true;
             score++;
+        }
+        else {
+            win = false;
         }
         return score;
     }
  
-    public String getOutcome() {
-        return "";
+    public void Outcome() {
+        String dialogueReaction;
+        if (win) {
+            int n = (int)(Math.random() * (winDialogue.length - 1));
+            dialogueReaction = winDialogue[n];
+        }
+        else {
+            int n = (int)(Math.random() * (loseDialogue.length - 1));
+            dialogueReaction = loseDialogue[n];
+        }
+        System.out.println(dialogueReaction); //returns a random statement depending on the results 
+        System.out.println("You have earned " + score + " points!"); //returns total score
     }
 }
