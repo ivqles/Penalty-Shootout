@@ -75,6 +75,16 @@ public class Goal {
 
      public static void setLevel(String l){
         // levelString = l.toUpperCase();
+        // switch (levelString) {
+        //     case "EASY":
+        //         break;
+        //     case "MEDIUM":
+        //         break;
+        //     case "HARD":
+        //         break;
+        //     case "ABSTRACT";
+        //         break;
+        // }
     }
 
      static void PlayGoalSound(File sound) {
