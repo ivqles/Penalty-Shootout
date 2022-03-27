@@ -20,8 +20,8 @@ public class Goal {
     public static String levelString;
     public boolean win;
 
-    String[] winDialogue = {"ex: you made a goal"}; // ADD MORE DIALOGUE LATER
-    String[] loseDialogue = {"ex: you did not make a goal lol"}; // ADD MORE DIALOGUE LATER
+    String[] winDialogue = {"You made the goal! Your mom is very proud!", "The crowd in the stands cheer as you make the perfect kick!", "Congratulations! You made it!", "Nice! The goalie completely missed!", "Wow! That kick is so great that the scouts in the stands are writing down your number!"}; // ADD MORE DIALOGUE LATER
+    String[] loseDialogue = {"A person in the stands is mad that the goalie blocked your goal! They flip a table in outburst. (╯°□°）╯︵ ┻━┻", "You missed! Try again once you get more practice in.", "Missed. That's Disappointing."}; // ADD MORE DIALOGUE LATER
 
     char[][] goalArray = new char[countRows][countColumns];
  
