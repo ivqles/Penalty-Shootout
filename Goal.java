@@ -3,6 +3,11 @@ public class Goal {
     static char emptySpace = 'O';
     static char ball = 'B';
     static char goalie = 'G';
+    static char caught = 'X';
+    int gRow;
+    int gCol;
+    int bRow;
+    int bCol;
     static int countRows = 3;
     static int countColumns = 5;
     static int score = 0;
@@ -51,21 +56,25 @@ public class Goal {
  
     // called during every round; sets randomized place for "K"
     public void setGoalie() {
-        int col =  (int)(Math.random() * (countColumns - 1));
-        int row =  (int)(Math.random() * (countRows - 1));  
-        goalArray[row][col] = goalie;
-        goaliePos = row * 3 + col * 5;
+        int gCol =  (int)(Math.random() * (countColumns - 1));
+        int gRow =  (int)(Math.random() * (countRows - 1));  
+        goalArray[gRow][gCol] = goalie;
     }
  
     //sets the ball to position provided by the player
     public void kick(int row, int col) {
-        goalArray[row][col] = ball;
-        playerPos = row * 3 + col * 5;
-          
+        bRow = row;
+        bCol = col;
+        if (goalArray[row][col] == emptySpace) {
+            goalArray[row][col] = ball;
+        }
+        else {
+            goalArray[row][col] = caught;
+        }
     }
 
     public int totalScore(){
-        if(goaliePos != playerPos){
+        if(goalArray[bRow][gCol] == ball){
             win = true;
             score++;
         }

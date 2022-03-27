@@ -4,7 +4,6 @@ public class Main {
 
     public static void main(String args[]){
         Scanner x = new Scanner(System.in);
-        Goal game = new Goal();
 
         //introduction
         System.out.println("Welcome to the ARENA!");
@@ -20,6 +19,7 @@ public class Main {
         
         int score = 0;
         while (score < 3) {
+            Goal game = new Goal();
             System.out.println(game); //returns a 3 by 5 grid
             System.out.print("Enter the row number: ");
             int r = x.nextInt() - 1;
@@ -44,6 +44,7 @@ public class Main {
             }
         } 
         // MAKE + ADD "ENDGAME" METHOD HERE!
+        System.out.println("Thanks for Playing!");
         x.close(); //closes Scanner
         //if there are four modes...     easy / med / hard / abstract (1, 2, 3, 4)
         //medium would have increasing goalie positions by 1
