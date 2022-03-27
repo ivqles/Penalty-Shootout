@@ -1,6 +1,9 @@
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import java.awt.Graphics2D;
+import javax.swing.JFrame;
+import pkg.*;
 
 public class Goal {
      // Instantiating Variables
@@ -19,6 +22,12 @@ public class Goal {
     public int goaliePos = 0;
     public static String levelString;
     public boolean win;
+    public Rectangle net = new Rectangle();
+	public Ellipse[] positions = new Ellipse [15];
+    public Text playerB;
+    public Text goalieO;
+    public Color positionsCol = new Color (196, 188, 185);
+
 
     String[] winDialogue = {"ex: you made a goal"}; // ADD MORE DIALOGUE LATER
     String[] loseDialogue = {"ex: you did not make a goal lol"}; // ADD MORE DIALOGUE LATER
@@ -27,8 +36,20 @@ public class Goal {
  
      // Constructing Goal / Game Board (3 x 5)
      public Goal() {
+        String myPicture = "https://ak.picdn.net/shutterstock/videos/1024013435/thumb/1.jpg";
+		Picture test = new Picture();
+		test.load(myPicture);
+		test.draw();
+		test.grow(250,250);
+        test.translate(100,0);
+		net = new Rectangle (230,140,620,380);
+		net.setColor(Color.WHITE);
+		net.fill();
          for (int row = 0; row < countRows; row++) {
              for (int col = 0; col < countColumns; col++) {
+                positions[col] = new Ellipse (250+col*120,160+row*120,100,100);
+				positions[col].setColor(positionsCol);
+				positions[col].fill();
                  goalArray[row][col] = emptySpace;
              }
          }
@@ -38,8 +59,6 @@ public class Goal {
         System.out.println("Choose your game mode!");
         System.out.println("EASY: it's easy. basic. what else would you expect.");
         System.out.println("MEDIUM: ooh... looking for a challenge are you? Well, now the goalie can block an increasing amount of spaces per turn, muahaha.");
-        System.out.println("HARD: say good-bye to your previous choices! One click and there's no going back.");
-        System.out.println("ABSTRACT: ever wanted a changing goal? no? well here's one anyway.");
         System.out.print("Level: ");
      }
      // toString Method for Proper String Output
@@ -59,12 +78,18 @@ public class Goal {
         int gCol =  (int)(Math.random() * (countColumns - 1));
         int gRow =  (int)(Math.random() * (countRows - 1));  
         goalArray[gRow][gCol] = goalie;
+        goalieO = new Text (295+gCol*120,195+gRow*120,"O");
+        goalieO.draw();
+        goalieO.grow(33.0,50.0);
     }
  
     //sets the ball to position provided by the player
     public void kick(int row, int col) {
         bRow = row;
         bCol = col;
+        playerB = new Text (295+col*120,195+row*120,"B");
+        playerB.draw();
+        playerB.grow(33.0,50.0);
         if (goalArray[row][col] == emptySpace) {
             goalArray[row][col] = ball;
         }
@@ -123,6 +148,16 @@ public class Goal {
             int n = (int)(Math.random() * (loseDialogue.length - 1));
             dialogueReaction = loseDialogue[n];
         }
+
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 5; col++) {
+               positions[col] = new Ellipse (250+col*120,160+row*120,100,100);
+               positions[col].setColor(positionsCol);
+               positions[col].fill();
+                goalArray[row][col] = emptySpace;
+            }
+        }
+
         System.out.println(dialogueReaction); //returns a random statement depending on the results 
         System.out.println("You have earned " + score + " points!"); //returns total score
     }

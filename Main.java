@@ -8,15 +8,7 @@ public class Main {
         //introduction
         System.out.println("Welcome to the ARENA!");
         System.out.println("Your task: shoot a goal! Choose the spot where the goalie can't reach! \n");
-        //Goal.gameModes();
-        // System.out.print("Level: ");
-        // String mode = x.nextLine();
-        // Goal.setLevel(mode);
-        // ADD IF ELSE TO MAKE SURE MODE IS A REAL MODE!
 
-
-
-        
         int score = 0;
         while (score < 3) {
             Goal game = new Goal();
@@ -46,16 +38,13 @@ public class Main {
         // MAKE + ADD "ENDGAME" METHOD HERE!
         System.out.println("Thanks for Playing!");
         x.close(); //closes Scanner
-        //if there are four modes...     easy / med / hard / abstract (1, 2, 3, 4)
-        //medium would have increasing goalie positions by 1
-        //hard would be the user can't choose the same spot twice //abstract would be a changing goal size
-        /*
-        Goal game2 = new Goal();
-        System.out.println("Choose your mode:" + game2.introduction()); //return all the modes and their descriptions
-        Scanner i =new Scanner(System.in);
-        int diff = i.readInt();
-        game2.setLevel(diff);
-        */
+
+        //if we had more time: 
+        //there would be four modes...     easy / med / hard / abstract (1, 2, 3, 4)
+        //hard would be the user can't choose the same spot twice 
+        //abstract would be a changing goal size
+        //also would make a goalie/player graphic on the side
+        //add more sound effects such as crowd cheering
     
     }
 }
