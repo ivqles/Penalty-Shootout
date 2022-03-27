@@ -34,12 +34,12 @@ public class Goal {
          }
      }
  
-     public void introduction() {
+     public static void gameModes() {
         System.out.println("Choose your game mode!");
         System.out.println("EASY: it's easy. basic. what else would you expect.");
         System.out.println("MEDIUM: ooh... looking for a challenge are you? Well, now the goalie can block an increasing amount of spaces per turn, muahaha.");
-        System.out.println("HARD: say good-bye to your previous choices! One click and there's no going back.");
-        System.out.println("ABSTRACT: ever wanted a changing goal? no? well here's one anyway.");
+        // System.out.println("HARD: say good-bye to your previous choices! One click and there's no going back.");
+        // System.out.println("ABSTRACT: ever wanted a changing goal? no? well here's one anyway.");
         System.out.print("Level: ");
      }
      // toString Method for Proper String Output
@@ -55,10 +55,23 @@ public class Goal {
      }
  
     // called during every round; sets randomized place for "K"
-    public void setGoalie() {
-        int gCol =  (int)(Math.random() * (countColumns - 1));
-        int gRow =  (int)(Math.random() * (countRows - 1));  
-        goalArray[gRow][gCol] = goalie;
+    public void setGoalie(int roundNum) {
+        if (levelString.equals("EASY")) {
+            gCol =  (int)(Math.random() * (countColumns - 1));
+            gRow =  (int)(Math.random() * (countRows - 1));  
+            goalArray[gRow][gCol] = goalie;
+        }
+        else if (levelString.equals("MEDIUM")) {
+            for (int i = 1; i <= roundNum && i <= 15; i++){
+                gCol =  (int)(Math.random() * (countColumns - 1));
+                gRow =  (int)(Math.random() * (countRows - 1));  
+                while (goalArray[gRow][gCol] != emptySpace) {
+                    gCol =  (int)(Math.random() * (countColumns - 1));
+                    gRow =  (int)(Math.random() * (countRows - 1));      
+                }
+                goalArray[gRow][gCol] = goalie;
+            }
+        }
     }
  
     //sets the ball to position provided by the player
@@ -74,7 +87,17 @@ public class Goal {
     }
 
      public static void setLevel(String l){
-        // levelString = l.toUpperCase();
+        levelString = l.toUpperCase();
+        // switch (levelString) {
+        //     case "EASY":
+        //         break;
+        //     case "MEDIUM":
+        //         break;
+        //     case "HARD":
+        //         break;
+        //     case "ABSTRACT":
+        //         break;
+        // }
     }
 
      static void PlayGoalSound(File sound) {
@@ -91,7 +114,7 @@ public class Goal {
 
      }
     public int totalScore(){
-        if(goalArray[bRow][gCol] == ball){
+        if(goalArray[bRow][bCol] == ball){
             win = true;
             score++;
         }

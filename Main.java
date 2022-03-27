@@ -4,22 +4,24 @@ public class Main {
 
     public static void main(String args[]){
         Scanner x = new Scanner(System.in);
-
-        //introduction
+        int roundNum = 0;
+        // Introduction
         System.out.println("Welcome to the ARENA!");
-        System.out.println("Your task: shoot a goal! Choose the spot where the goalie can't reach! \n");
-        //Goal.gameModes();
-        // System.out.print("Level: ");
-        // String mode = x.nextLine();
-        // Goal.setLevel(mode);
-        // ADD IF ELSE TO MAKE SURE MODE IS A REAL MODE!
-
-
-
+        System.out.println("Your task is to shoot a goal! Choose the spot where the goalie can't reach! \n");
+        System.out.println("Pick a spot carefully!\nLEGEND:\nX represents a catch from the goalie\nB represents where your ball lands\nG represents the goalie's position");
+        Goal.gameModes();
+        String mode = x.nextLine();
+        while (mode.compareToIgnoreCase("EASY") != 0 && mode.compareToIgnoreCase("MEDIUM") != 0 && mode.compareToIgnoreCase("HARD") != 0 && mode.compareToIgnoreCase("ABSTRACT") != 0) { // Checks that inputted level is a real case
+            System.out.print("This is not a valid game mode! Try Again!\nLevel: ");
+            mode = x.nextLine();
+        }
+        Goal.setLevel(mode);
         
         int score = 0;
         while (score < 3) {
             Goal game = new Goal();
+            roundNum++;
+            System.out.println("ROUND " + roundNum);
             System.out.println(game); //returns a 3 by 5 grid
             System.out.print("Enter the row number: ");
             int r = x.nextInt() - 1;
@@ -34,9 +36,9 @@ public class Main {
                 c = x.nextInt() - 1;
             }
         
-            game.setGoalie(); //goalie position is placed randomly on the grid
+            game.setGoalie(roundNum); //goalie position is placed randomly on the grid
             game.kick(r,c); //inputs client's position on the grid
-            System.out.println(game); // pritns grid positions
+            System.out.println(game); // prints grid positions
             score = game.totalScore();
             game.Outcome(); // prints dialogue and score
             if (score != 3) {
